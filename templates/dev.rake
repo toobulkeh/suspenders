@@ -1,4 +1,4 @@
-if Rails.env.development? || Rails.env.test?
+unless Rails.env.production?
   require "factory_girl"
 
   namespace :dev do
