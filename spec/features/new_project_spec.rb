@@ -241,25 +241,10 @@ RSpec.describe "Suspend a new project with default configuration" do
     expect(File).to exist("#{project_path}/spec/factories.rb")
   end
 
-  it "creates review apps setup script" do
-    bin_setup_path = "#{project_path}/bin/setup_review_app"
-    bin_setup = IO.read(bin_setup_path)
-
-    expect(bin_setup).to include("PARENT_APP_NAME=#{app_name.dasherize}-staging")
-    expect(bin_setup).to include("APP_NAME=#{app_name.dasherize}-staging-pr-$1")
-    expect(bin_setup).
-      to include("heroku run rails db:migrate --exit-code --app $APP_NAME")
-    expect(bin_setup).to include("heroku ps:scale worker=1 --app $APP_NAME")
-    expect(bin_setup).to include("heroku restart --app $APP_NAME")
-
-    expect(File.stat(bin_setup_path)).to be_executable
-  end
-
   it "creates deploy script" do
     bin_deploy_path = "#{project_path}/bin/deploy"
     bin_deploy = IO.read(bin_deploy_path)
 
-    expect(bin_deploy).to include("heroku run rails db:migrate --exit-code")
     expect(File.stat(bin_deploy_path)).to be_executable
   end
 
