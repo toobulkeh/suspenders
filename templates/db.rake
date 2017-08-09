@@ -1,7 +1,7 @@
-if Rails.env.development? or Rails.env.test? or ENV.fetch("HEROKU_APP_NAME", "").include?("staging-pr-")
+if ENV.fetch("PRIMEABLE", "").present?
   require "factory_girl"
 
-  namespace :dev do
+  namespace :db do
     desc "Sample data for local development environment"
     task prime: "db:setup" do
       include FactoryGirl::Syntax::Methods
