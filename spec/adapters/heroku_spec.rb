@@ -40,6 +40,20 @@ module Suspenders
         expect(app_builder).to have_backup_schedule("production")
       end
 
+      it "sets staging to primeable" do
+        app_builder = double(app_name: app_name)
+        allow(app_builder).to receive(:run)
+
+        Heroku.new(app_builder).set_heroku_staging_primeable
+
+        expect(app_builder).to(
+          have_configured_var("staging", "PRIMEABLE"),
+        )
+        expect(app_builder).to.not(
+          have_configured_var("production", "PRIMEABLE"),
+        )
+      end
+
       it "sets the application host" do
         app_builder = double(app_name: app_name)
         allow(app_builder).to receive(:run)

@@ -149,7 +149,6 @@ module Suspenders
 
     def create_local_heroku_setup
       say "Creating local Heroku setup"
-      build :create_review_apps_setup_script
       build :create_deploy_script
       build :create_heroku_application_manifest_file
     end
@@ -160,6 +159,7 @@ module Suspenders
         build :create_heroku_apps, options[:heroku_flags]
         build :set_heroku_remotes
         build :set_heroku_rails_secrets
+        build :set_heroku_staging_primeable
         build :set_heroku_application_host
         build :set_heroku_honeybadger_env
         build :set_heroku_backup_schedule

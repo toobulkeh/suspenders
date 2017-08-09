@@ -46,6 +46,10 @@ module Suspenders
         end
       end
 
+      def set_heroku_staging_primeable
+        run_toolbelt_command("config:add PRIMEABLE=true", "staging")
+      end
+
       def set_heroku_backup_schedule
         %w(staging production).each do |environment|
           run_toolbelt_command(
@@ -53,15 +57,6 @@ module Suspenders
             environment,
           )
         end
-      end
-
-      def create_review_apps_setup_script
-        app_builder.template(
-          "bin_setup_review_app.erb",
-          "bin/setup_review_app",
-          force: true,
-        )
-        app_builder.run "chmod a+x bin/setup_review_app"
       end
 
       def create_heroku_application_manifest_file

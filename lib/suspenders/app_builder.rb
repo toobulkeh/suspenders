@@ -10,7 +10,6 @@ module Suspenders
       :create_heroku_application_manifest_file,
       :create_heroku_pipeline,
       :create_production_heroku_app,
-      :create_review_apps_setup_script,
       :create_staging_heroku_app,
       :set_heroku_application_host,
       :set_heroku_backup_schedule,
