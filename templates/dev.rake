@@ -1,4 +1,4 @@
-unless Rails.env.production?
+if Rails.env.development? or Rails.env.test? or ENV.fetch("HEROKU_APP_NAME", "").include?("staging-pr-")
   require "factory_girl"
 
   namespace :dev do
