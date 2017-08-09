@@ -49,7 +49,7 @@ module Suspenders
         expect(app_builder).to(
           have_configured_var("staging", "PRIMEABLE"),
         )
-        expect(app_builder).to.not(
+        expect(app_builder).not_to(
           have_configured_var("production", "PRIMEABLE"),
         )
       end
