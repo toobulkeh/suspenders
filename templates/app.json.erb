@@ -1,7 +1,7 @@
 {
   "name":"<%= app_name.dasherize %>",
   "scripts":{
-    "postdeploy": "bundle exec rake dev:prime"
+    "postdeploy": "bundle exec rake db:prime"
   },
   "env":{
     "APPLICATION_HOST":{

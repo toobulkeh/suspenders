@@ -94,7 +94,7 @@ module Suspenders
     end
 
     def provide_dev_prime_task
-      copy_file 'dev.rake', 'lib/tasks/dev.rake'
+      copy_file 'db.rake', 'lib/tasks/db.rake'
     end
 
     def configure_generators

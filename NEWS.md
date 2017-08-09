@@ -1,3 +1,7 @@
+`master`
+
+* Renamed `dev:prime` task to `db:prime` and added to staging and staging PR envs.
+
 1.45.0 (September 8, 2017)
 
 * Bump Rails to 5.1.3 (#857)
